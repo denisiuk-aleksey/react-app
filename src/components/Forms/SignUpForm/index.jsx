@@ -1,11 +1,39 @@
 import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { SIGN_IN_SCHEMA } from '../../../utils/validationSchems';
 
-const SignUpForm = () => {
+const SignInForm = props => {
+  const initialValues = {
+    email: '',
+    password: '',
+  };
+
+  const onSubmit = (values, formikBag) => {
+    console.log(values);
+    console.log(formikBag);
+  };
+
   return (
-    <div>
-      
-    </div>
-  );
-}
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={SIGN_IN_SCHEMA}
+    >
+      {formProps => {
+        return (
+          <Form>
+            <Field name='email' />
+            <ErrorMessage component='span' name='email' />
 
-export default SignUpForm;
+            <Field type='password' name='password' />
+            <ErrorMessage component='span' name='password' className='test' />
+
+            <Field type='submit' value='Submit' disabled={!formProps.isValid} />
+          </Form>
+        );
+      }}
+    </Formik>
+  );
+};
+
+export default SignInForm;

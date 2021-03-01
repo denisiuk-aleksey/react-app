@@ -1,4 +1,5 @@
 import './App.css';
+import './reset.css';
 import WelcomePage from './pages/WelcomePage';
 
 const App = () => {

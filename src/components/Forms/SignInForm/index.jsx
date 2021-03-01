@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignInForm = () => {
+const SignInForm = props => {
   return (
     <div>
       
